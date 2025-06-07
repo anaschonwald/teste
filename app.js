@@ -1,12 +1,12 @@
 const container = document.getElementById('container');
 const filtroCategoria = document.getElementById('filtroCategoria');
 
-let cartoes = []; // vai armazenar todos os cartões criados
+let cartoes = []; // variavel que armazena os cartoes
 
 function criaCartao(categoria, pergunta, resposta) {
     let cartao = document.createElement('article');
     cartao.className = 'cartao';
-    cartao.dataset.categoria = categoria;  // adiciona categoria como atributo data
+    cartao.dataset.categoria = categoria;  // adiciona categoria
 
     cartao.innerHTML = `
     <div class="cartao__conteudo">
@@ -33,7 +33,7 @@ function criaCartao(categoria, pergunta, resposta) {
 }
 
 function populaFiltro() {
-    // extrai categorias únicas dos cartões
+    // nomeia categorias
     const categorias = [...new Set(cartoes.map(c => c.dataset.categoria))];
     categorias.forEach(cat => {
         const option = document.createElement('option');
@@ -109,6 +109,5 @@ criaCartao('Substantivo (noun)', 'Ball', 'Ball significa bola');
 criaCartao('Verbo (verb)', 'Paint', 'Paint significa pintar');
 criaCartao('Adjetivo (adjective)', 'Red', 'Red significa vermelho');
 
-// Depois que todos os cartões forem criados, popula o filtro e filtra para mostrar todos
 populaFiltro();
 filtrarCartoes();

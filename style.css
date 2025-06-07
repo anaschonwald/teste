@@ -1,13 +1,14 @@
 :root {
-    --background-color: #212121;
-    --text-color: #f8f8f8;
-    --card-front-color: #3c3c3c;
-    --card-back-color: #3c3c3c;
+    --background-color: #2f2f2f;      
+    --text-color: #ffffff;            
+    --card-front-color: #d3d3d3;     
+    --card-back-color: #ffffff;   //escrita cartao virado
 }
 
 body {
-    background-color: #212121
-    font-family: Bai Jamjuree;
+    background-color: var(--background-color);
+    font-family: Bai Jamjuree, sans-serif;
+    color: var(--text-color);
 }
 
 #container {
@@ -28,14 +29,15 @@ body {
 .cartao__conteudo {
     background-color: var(--card-front-color);
     text-align: center;
-    /* background-color: aquamarine; */
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 300ms ease-in-out;
+    color: #ffffff; //texto frente cartao
 }
 
 .cartao__conteudo h3 {
-    color: var(--text-color);
+    color: #fffdfd; //cor das categorias
+    border: 1px #fffdfd ;   //cor da margem das categorias
     border: 1px solid var(--text-color);
     text-align: left;
     padding: 0.5rem;
@@ -47,14 +49,12 @@ body {
 }
 
 .cartao__conteudo p {
-    margin-top: 1rem;
-    padding: 2rem;
     margin-top: 4rem;
+    padding: 2rem;
     font-size: 1.4vw;
 }
 
 .cartao__conteudo__pergunta p {
-    color: var(--text-color);
     font-weight: 500;
 }
 
@@ -78,8 +78,9 @@ body {
 
 .cartao__conteudo__resposta {
     transform: rotateY(180deg);
-    background-color: rgba(30, 31, 30, 1);
+    background-color: var(--card-back-color);
     border: 4px solid var(--card-back-color);
+    color: #ffffff; /* texto branco no verso */
 }
 
 footer {
@@ -104,7 +105,7 @@ footer p {
     }
 
     .cartao {
-        flex: 1 0 calc(100% - 1rem)
+        flex: 1 0 calc(100% - 1rem);
     }
 
     .cartao__conteudo h3 {
@@ -114,4 +115,15 @@ footer p {
     .cartao__conteudo p {
         font-size: 3.8vw;
     }
+}
+
+.cartao {
+    margin: 1rem 1rem;
+    height: 20rem;
+    flex-grow: 1;
+    flex-basis: calc(33% - 6rem);
+    border: 2px solid #ffffff; /* borda branca */
+    border-radius: 8px;         /* cantos arredondados */
+    box-sizing: border-box;     /* para incluir a borda no tamanho */
+    transition: border-color 0.3s ease;
 }

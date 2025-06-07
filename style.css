@@ -1,8 +1,11 @@
 :root {
-    --background-color: #2f2f2f;      
-    --text-color: #ffffff;            
-    --card-front-color: #d3d3d3;     
-    --card-back-color: #ffffff;   //escrita cartao virado
+    --background-color: #222020;
+    --text-color: #ffffff;
+    --card-front-color: #d3d3d3;
+    --card-back-color: #ffffff;
+    --border-noun: #ffc0cb;       /* rosa claro */
+    --border-verb: #ff69b4;       /* rosa médio */
+    --border-adjective: #db7093;  /* rosa escuro */
 }
 
 body {
@@ -12,7 +15,7 @@ body {
 }
 
 #container {
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 4rem;
@@ -24,6 +27,24 @@ body {
     height: 20rem;
     flex-grow: 1;
     flex-basis: calc(33% - 6rem);
+    border: 2px solid white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    position: relative;
+}
+
+/* Estilos por categoria */
+.cartao[data-categoria*="noun"] {
+    border-color: var(--border-noun);
+}
+
+.cartao[data-categoria*="verb"] {
+    border-color: var(--border-verb);
+}
+
+.cartao[data-categoria*="adjective"] {
+    border-color: var(--border-adjective);
 }
 
 .cartao__conteudo {
@@ -32,12 +53,12 @@ body {
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 300ms ease-in-out;
-    color: #ffffff; //texto frente cartao
+    color: #ffffff;
+    position: relative;
 }
 
 .cartao__conteudo h3 {
-    color: #fffdfd; //cor das categorias
-    border: 1px #fffdfd ;   //cor da margem das categorias
+    color: var(--text-color);
     border: 1px solid var(--text-color);
     text-align: left;
     padding: 0.5rem;
@@ -46,6 +67,7 @@ body {
     border-radius: 0.6rem;
     font-size: 1vw;
     backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0);
 }
 
 .cartao__conteudo p {
@@ -58,8 +80,14 @@ body {
     font-weight: 500;
 }
 
+.cartao__conteudo__resposta {
+    transform: rotateY(180deg);
+    background-color: var(--card-back-color);
+    border: 4px solid var(--card-back-color);
+    color: #ffffff;
+}
+
 .cartao__conteudo__resposta p {
-    color: var(--card-back-color);
     font-weight: 700;
 }
 
@@ -76,15 +104,8 @@ body {
     box-sizing: border-box;
 }
 
-.cartao__conteudo__resposta {
-    transform: rotateY(180deg);
-    background-color: var(--card-back-color);
-    border: 4px solid var(--card-back-color);
-    color: #ffffff; /* texto branco no verso */
-}
-
 footer {
-    background-color: black;
+    background-color: #ff8da1;
     color: white;
     position: fixed;
     bottom: 0;
@@ -99,9 +120,9 @@ footer p {
 }
 
 @media (max-width: 560px) {
-    
     body {
-        background: url('img/bg-mobile.webp'), no-repeat cover;
+        background: url('img/bg-mobile.webp') no-repeat center center;
+        background-size: cover;
     }
 
     .cartao {
@@ -117,13 +138,3 @@ footer p {
     }
 }
 
-.cartao {
-    margin: 1rem 1rem;
-    height: 20rem;
-    flex-grow: 1;
-    flex-basis: calc(33% - 6rem);
-    border: 2px solid #ffffff; /* borda branca */
-    border-radius: 8px;         /* cantos arredondados */
-    box-sizing: border-box;     /* para incluir a borda no tamanho */
-    transition: border-color 0.3s ease;
-}
